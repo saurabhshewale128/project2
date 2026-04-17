@@ -1,18 +1,18 @@
 {
-  "engines":{
-    "node": "24.13.1"
-  },
   "name": "majorproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "@maptiler/client": "^3.0.1",
     "@maptiler/sdk": "^4.0.1",
