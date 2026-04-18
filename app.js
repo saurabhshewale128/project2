@@ -125,7 +125,7 @@ app.use("/listings/:id/reviews", reviewRouter);  // ✅ FIXED
 app.use("/users", userRouter);
 
 app.get("/", (req, res) => {
-    res.send("Website is working 🚀");
+    res.redirect("/listings");
 });
 
 // app.use("/listings", listingRouter);
