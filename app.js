@@ -1,3 +1,4 @@
+
 if(process.env.NODE_ENV != "production") {
     require("dotenv").config();
 }
@@ -47,7 +48,7 @@ async function main() {
 }   
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    secret: "process.env.SECRET",   // ✅ move here
+    secret: process.env.SECRET,   // ✅ move here
     touchAfter: 24 * 3600,
 });
 // const store = MongoStore.create({
@@ -75,7 +76,7 @@ store.on("error", (err) => {
 // };
 const sessionOptions = {
     store: store,
-    secret: "process.env.SECRET",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,   // ✅ CHANGE THIS
     cookie: {
@@ -121,7 +122,11 @@ app.use((req, res, next) => {
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);  // ✅ FIXED
-app.use("/", userRouter);
+app.use("/users", userRouter);
+
+app.get("/", (req, res) => {
+    res.send("Website is working 🚀");
+});
 
 // app.use("/listings", listingRouter);
 // console.log("listingRouter:", listingRouter);
